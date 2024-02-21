@@ -1,0 +1,55 @@
+﻿@using EmployeeProject.UI.ViewModels.Address
+@model DetailViewModel
+@{
+    ViewData["Title"] = $"Address";
+}
+
+<div class="row header-row">
+    <div class="col">
+        <h1>Are you sure you want to delete this address?</h1>
+        <a asp-controller="Employee" asp-action="Update" asp-route-id="@Model.Address.EmployeeId">Go Back</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <form method="post" asp-controller="Address" asp-controller="Delete">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="Address.Id" />
+            <input type="hidden" asp-for="Address.EmployeeId" />
+
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="Address.Address1"></label>
+                        <input class="form-control" asp-for="Address.Address1" readonly />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="Address.Address2"></label>
+                        <input class="form-control" asp-for="Address.Address2" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label class="form-label" asp-for="Address.AddressCity"></label>
+                    <input class="form-control" asp-for="Address.AddressCity" readonly />
+                </div>
+                <div class="col">
+                    <label class="form-label" asp-for="Address.AddressState"></label>
+                    <input class="form-control" asp-for="Address.AddressState" readonly />
+                </div>
+                <div class="col">
+                    <label class="form-label" asp-for="Address.AddressZip"></label>
+                    <input class="form-control" asp-for="Address.AddressZip" readonly />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mt-3">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

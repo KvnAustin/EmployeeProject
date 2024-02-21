@@ -1,0 +1,60 @@
+﻿@using EmployeeProject.UI.ViewModels.Address
+@model DetailViewModel
+@{
+    ViewData["Title"] = $"Address";
+}
+
+<div class="row header-row">
+    <div class="col">
+        <h1>Address Details</h1>
+        <a asp-controller="Employee" asp-action="Update" asp-route-id="@Model.Address.EmployeeId">Go Back</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <form method="post" asp-controller="Address" asp-controller="Update">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="Address.Id" />
+            <input type="hidden" asp-for="Address.EmployeeId" />
+
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="Address.Address1"></label>
+                        <input class="form-control" asp-for="Address.Address1" />
+                        <span class="text-danger" asp-validation-for="Address.Address1"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="Address.Address2"></label>
+                        <input class="form-control" asp-for="Address.Address2" />
+                        <span class="text-danger" asp-validation-for="Address.Address2"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label class="form-label" asp-for="Address.AddressCity"></label>
+                    <input class="form-control" asp-for="Address.AddressCity" />
+                    <span class="text-danger" asp-validation-for="Address.AddressCity"></span>
+                </div>
+                <div class="col">
+                    <label class="form-label" asp-for="Address.AddressState"></label>
+                    <input class="form-control" asp-for="Address.AddressState" />
+                    <span class="text-danger" asp-validation-for="Address.AddressState"></span>
+                </div>
+                <div class="col">
+                    <label class="form-label" asp-for="Address.AddressZip"></label>
+                    <input class="form-control" asp-for="Address.AddressZip" />
+                    <span class="text-danger" asp-validation-for="Address.AddressZip"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mt-3">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
